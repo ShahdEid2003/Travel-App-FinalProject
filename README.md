@@ -134,7 +134,5 @@ npm update webpack webpack-dev-server
 ---
 
 ## 📌 **Author**
-This app was developed as part of the **FEND Capstone Project** 🎓.
-
-✨ **Good luck! 🚀**
+Shahd Eid
 
