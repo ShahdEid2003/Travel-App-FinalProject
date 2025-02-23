@@ -1,21 +1,21 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
-dotenv.config();
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static("dist"));
+app.use(express.json());
 
-const port = 8081;
-app.listen(port, () => {
-    console.log(`Server running on localhost:${port}`);
+app.get('/', (req, res) => {
+    res.status(200).send('Server is running');
 });
 
-app.post("/trip", async (req, res) => {
-    const { location } = req.body;
-    res.send({ message: `Received trip request for ${location}` });
-});
 
+if (process.env.NODE_ENV !== 'test') {
+    const PORT = process.env.PORT || 8081;
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
+
+module.exports = app;
